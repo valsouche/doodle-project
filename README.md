@@ -1,7 +1,4 @@
-# projets-epsi
-
-This project is generated with [yo angular generator](https://github.com/yeoman/generator-angular)
-version 0.15.1.
+# projets-epsi ASKEET.IO
 
 ## Build & development
 
@@ -10,3 +7,5 @@ Run `grunt` for building and `grunt serve` for preview.
 ## Testing
 
 Running `grunt test` will run the unit tests with karma.
+
+## Please, make all your works on local branch and push on it, NOT ON MASTER :)
