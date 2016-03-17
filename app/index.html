@@ -75,14 +75,14 @@
         <div class="formulaire">
           <h2>To start, it's now!</h4>
           <div class="row">
-            <form name="email" style="margin-left:180px">
+            <form name="emailSend" style="margin-left:180px" ng-submit="emailSend()" ng-controller="MainCtrl">
               <div class="form-group">
                 <div class="input-group col-xs-8">
-                  <input type="text" class="form-control" style="height:50px" id="exampleInputAmount" placeholder="enter your email address">
+                  <input name="email" type="text" class="form-control" style="height:50px" id="exampleInputAmount" placeholder="enter your email address" ng-model="email">
                   <div class="input-group-addon"><a type="submit" class="btn btn-info" style="padding:13px;margin:-13px;">Go</a></div>
                 </div>
               </div>
-
+              <pre>list={{list}}</pre>
             </form>
           </div>
         </div>
