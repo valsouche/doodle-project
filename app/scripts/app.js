@@ -26,24 +26,36 @@ angular
 
       .state('home', {
         url: '/home',
-        views: {
-          'mainView': {
-            templateUrl: 'views/main.html',
-            controller: 'MainCtrl',
-            controllerAs: 'main'
-          }
-        }
+          templateUrl: 'views/main.html',
+          controller: 'MainCtrl',
+          controllerAs: 'main'
       })
 
       .state('about', {
         url: '/about',
-        views: {
-          'mainView': {
-            templateUrl: 'views/about.html',
-            controller: 'AboutCtrl',
-            controllerAs: 'about'
-          }
-        }
+          templateUrl: 'views/about.html',
+          controller: 'AboutCtrl',
+          controllerAs: 'about'
+      })
+
+      .state('createAskeet', {
+        templateUrl: 'views/create-askeet-form.html',
+        controller: 'CreateAskeetCtrl'
+      })
+
+      .state('createAskeet.step1', {
+        url: '/new-askeet',
+        templateUrl: 'views/multi-step-form/step1.html',
+      })
+
+      .state('createAskeet.step2', {
+        url: '/new-askeet2',
+        templateUrl: 'views/multi-step-form/step2.html',
+      })
+
+      .state('createAskeet.step3', {
+        url: '/new-askeet3',
+        templateUrl: 'views/multi-step-form/step3.html',
       })
 
       .state('reponse', {
