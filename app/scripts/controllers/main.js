@@ -15,14 +15,13 @@ angular.module('projetsEpsiApp')
       'Karma'
     ];
 
-	$scope.email = {};
-	$scope.list = ['test'];
+	$scope.email = {
+	};
+	$scope.list = [''];
 	$scope.emailSend = function(){
-		
-			if ($scope.email) {
-	          $scope.list.push(this.email);
+			if ($scope.email.votroMail) {
+	          $scope.email.push($scope.email.votroMail);
 
 	        }
-	
 	}
   });

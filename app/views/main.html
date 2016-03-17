@@ -52,11 +52,11 @@
     <form name="emailSend" style="margin-left:180px" ng-submit="emailSend()" ng-controller="MainCtrl">
       <div class="form-group">
         <div class="input-group col-xs-8">
-          <input type="text" name="email" class="form-control" style="height:50px" id="exampleInputAmount" placeholder="enter your email address" ng-model="email">
+          <input type="text" name="email" class="form-control" style="height:50px" id="exampleInputAmount" placeholder="enter your email address" ng-model="email.votreMail">
           <div class="input-group-addon"><a type="submit" class="btn btn-info" style="padding:13px;margin:-13px;">Go</a></div>
         </div>
       </div>
-      <pre>list={{list}}</pre>
+      <pre>list={{email}}</pre>
     </form>
   </div>
 </div>
