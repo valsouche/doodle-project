@@ -100,3 +100,18 @@ body {
 .intro .text{
   margin-top:50px;
 }
+.Start{
+  text-align:center;
+  margin-bottom:20px;
+}
+.start-button{
+  padding: 16px 60px;
+  background: #bde9d7;
+  border: #7cd4af;
+  font-size: 23px;
+
+  &:hover,&:focus,&:active,&:visited{
+      background: #7cd4af;
+      border: #bde9d7;
+  }
+}
