@@ -1,5 +1,8 @@
-<h1> Planifiez vos évènements </h1>
-
-<form class="form-horizontal">
-    <div ui-view></div>
-</form>
+<div class="intro col-xs-12">
+    <div class="row">
+        <form name="askeetFormCreation" class="form-horizontal">
+            <div ui-view></div>
+            <pre>{{vm.askeet | json}}</pre>
+        </form>
+    </div>
+</div>

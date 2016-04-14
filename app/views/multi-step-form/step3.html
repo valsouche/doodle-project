@@ -1,1 +1,37 @@
-Step 3
+<h1>Vos critères</h1>
+<div class="checkbox">
+    <label>
+        <input type="checkbox" ng-model="vm.askeet.details.privateVote"> Je souhaite que les votes soit privés
+    </label>
+</div>
+<div class="checkbox">
+    <label>
+        <input type="checkbox" ng-model="vm.askeet.details.voteModification"> Je souhaite permettre la modification d'un vote après validation
+    </label>
+</div>
+<div class="checkbox">
+    <label>
+        <input type="checkbox" ng-model="vm.askeet.details.voteModificationByUsers"> Je souhaite qu'un vote puisse être modifié par un autre utilisateur
+    </label>
+</div>
+<div class="checkbox">
+    <label>
+        <input type="checkbox" ng-model="vm.askeet.details.multipleVote"> Je souhaite permettre les réponses à choix multiple
+    </label>
+</div>
+<div class="checkbox">
+    <label>
+        <input type="checkbox" ng-model="vm.askeet.details.addAnswerByUser"> Je souhaite permettre à l'utilisateur d'ajouté une réponse
+    </label>
+</div>
+<div class="checkbox">
+    <label>
+        <input type="checkbox" ng-model="vm.askeet.details.displayResult"> Je souhaite afficher un sondage final aux utilisateurs apres leur participation.
+    </label>
+</div>
+<div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+        <a ui-sref="createAskeet.step2" class="btn btn-default">Revenir</a>
+        <a ui-sref="createAskeet.step4" class="btn btn-default">Poursuivre</a>
+    </div>
+</div>
