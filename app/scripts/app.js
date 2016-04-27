@@ -65,6 +65,11 @@ angular
         templateUrl: 'views/multi-step-form/step4.html'
       })
 
+      .state('createAskeet.step5', {
+        url: '/new-askeet5',
+        templateUrl: 'views/multi-step-form/step5.html'
+      })
+
       .state('reponse', {
         url: '/reponse',
         views: {

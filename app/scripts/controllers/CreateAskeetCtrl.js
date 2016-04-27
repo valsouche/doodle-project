@@ -27,7 +27,7 @@ angular.module('projetsEpsiApp')
 				location: null,
 				description: null,
 				criteria: [],
-				details:{
+				details: {
 					privateVote: false,
 					voteModification: false,
 					voteModificationByUsers: false,
@@ -38,6 +38,61 @@ angular.module('projetsEpsiApp')
 				invitations: []
 			};
 
+			vm.displayDate = function() {
+				vm.displayDatepicker = true;
+				vm.displayTextInput = false;
+				vm.displayTimePicker = false;
+			};
+			vm.displayText = function() {
+				vm.displayDatepicker = false;
+				vm.displayTextInput = true;
+				vm.displayTimePicker = false;
+			};
+			vm.displayTime = function() {
+				vm.displayDatepicker = false;
+				vm.displayTextInput = false;
+				vm.displayTimePicker = true;
+			};
+
+			// Ajout d'input type date
+			vm.datepicker = {data: null};
+			vm.addInput = function() {
+				if (!_.isNull(vm.dateTmp)) {
+					vm.askeet.criteria.push({data: vm.dateTmp});
+					vm.dateTmp = null;
+				}
+				else if (!_.isNull(vm.textTmp)) {
+					vm.askeet.criteria.push({data: vm.textTmp});
+					vm.textTmp = null;
+				}
+				else if (!_.isNull(vm.timeTmp)) {
+					vm.askeet.criteria.push({data: vm.timeTmp});
+					vm.timeTmp = null;
+				}
+			};
+
+			vm.deleteInput = function(criteria) {
+				vm.askeet.criteria.splice(_.indexOf(vm.askeet.criteria, _.find(vm.askeet.criteria, { 'data': criteria.data })), 1);
+			};
+
+			// Gestion ajout emails invitations
+			vm.tmpEmail = null;
+			vm.invalid = null;
+			vm.addEmail = function() {
+				if (!_.isNull(vm.tmpEmail) && _.includes(vm.tmpEmail, '@')) {
+					vm.invalid = false;
+					vm.askeet.invitations.push(vm.tmpEmail);
+					vm.tmpEmail = "";
+				} else {
+					vm.invalid = true;
+				}
+			};
+
+
+
+
+			//CODE LIBRAIRIES TIERCES
+			//
 			// Gestion du date picker (cc angular-bootstrap)
 			$scope.today = function() {
 				$scope.dt = new Date();
@@ -71,62 +126,6 @@ angular.module('projetsEpsiApp')
 			$scope.toggleMode = function() {
 				$scope.ismeridian = ! $scope.ismeridian;
 			};
-
-			vm.displayDate = function() {
-				vm.displayDatepicker = true;
-				vm.displayTextInput = false;
-				vm.displayTimePicker = false;
-			};
-			vm.displayText = function() {
-				vm.displayDatepicker = false;
-				vm.displayTextInput = true;
-				vm.displayTimePicker = false;
-			};
-			vm.displayTime = function() {
-				vm.displayDatepicker = false;
-				vm.displayTextInput = false;
-				vm.displayTimePicker = true;
-			};
-
-			// Ajout d'input type date
-			vm.datepicker = {data: null};
-			vm.dateTmp = null;
-			vm.addDateInput = function() {
-				if (!_.isNull(vm.dateTmp)) {
-					vm.askeet.criteria.push({data: vm.dateTmp});
-					vm.dateTmp = null;
-				}
-			};
-
-			vm.addTextInput = function() {
-				if (!_.isNull(vm.textTmp)) {
-					vm.askeet.criteria.push({data: vm.textTmp});
-					vm.textTmp = null;
-				}
-			};
-
-			vm.addTimepicker = function() {
-				if (!_.isNull(vm.timeTmp)) {
-					vm.askeet.criteria.push({data: vm.timeTmp});
-					vm.timeTmp = null;
-				}
-			};
-
-
-
-
-			// Gestion ajout emails invitations
-			vm.tmpEmail = null;
-			vm.invalid = null;
-			vm.addEmail = function() {
-				if (!_.isNull(vm.tmpEmail) && _.includes(vm.tmpEmail, '@')) {
-					vm.invalid = false;
-					vm.askeet.invitations.push(vm.tmpEmail);
-					vm.tmpEmail = "";
-				} else {
-					vm.invalid = true;
-				}
-			}
 
 		}
 
