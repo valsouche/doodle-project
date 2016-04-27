@@ -25,12 +25,15 @@
                 <td class="choix-champ"><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span></td>
               </tr>
               <tr >
-                <td sclass='participant'><div class="triangle"></div><input type="text" class="form-control name-participant name" placeholder="Votre nom"></input></td>
-                <td class="choix-champ"><input type="checkbox" value=""></td>
-                <td class="choix-champ"><input type="checkbox" value=""></td>
-                <td class="choix-champ"><input type="checkbox" value=""></td>
+                <form name="emailReponse" style="margin-left:180px" ng-submit="emailReponse()" ng-controller="ReponseCtrl">
+                  <td sclass='participant'><div class="triangle"></div><input type="text" class="form-control name-participant name" placeholder="Votre nom" ng-model="answers.nameUser"></input></td>
+                  <td class="choix-champ"><input type="checkbox" value="1" ng-model="answers.choix_1"></td>
+                  <td class="choix-champ"><input type="checkbox" value="2" ng-model="answers.choix_2"></td>
+                  <td class="choix-champ"><input type="checkbox" value="3" ng-model="answers.choix_3"></td>
+                </form>
               </tr>
             </tbody>
           </table>
-          <a class="valide-choix btn btn-info">Valide Votre Choix</a>
+          <a class="valide-choix btn btn-info" ng-click="emailReponse">Valide Votre Choix</a>
         </div>
+        <pre>list={{answers}}</pre>
