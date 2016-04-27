@@ -7,4 +7,11 @@
 
 @import 'global';
 
-
+.navbar-default {
+    background-color: #bde9d7;
+    border-color: #e4f6ef;
+}
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
+    color: #fff;
+    background-color: #7cd4af;
+}
