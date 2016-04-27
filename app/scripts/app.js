@@ -45,4 +45,15 @@ angular
           }
         }
       })
+
+      .state('reponse', {
+        url: '/reponse',
+        views: {
+          'mainView': {
+            templateUrl: 'views/reponse.html',
+            controller: 'ReponseCtrl',
+            controllerAs: 'reponse'
+          }
+        }
+      })
   });

@@ -1,0 +1,94 @@
+// ----------------------------------------
+// Questionnaire page
+// ----------------------------------------
+// Askeet.io
+// Copyright (c) 2015 VS
+// ----------------------------------------
+
+@import 'global';
+
+.questionnaire{
+	border:  1px solid #bde9d7;
+	border-radius: 20px;
+    margin-bottom: 20px;
+    -moz-box-shadow: 2px 2px 2px 0px #bde9d7;
+	-webkit-box-shadow: 2px 2px 2px 0px #bde9d7;
+	-o-box-shadow: 2px 2px 2px 0px #bde9d7;
+	box-shadow: 2px 2px 2px 0px #bde9d7;
+	filter:progid:DXImageTransform.Microsoft.Shadow(color=#bde9d7, Direction=134, Strength=2);
+}
+
+.title-questionnaire{
+	color:#666666;
+}
+
+.reponse-table{
+	margin-top: 20px;
+	margin-bottom: 30px;
+}
+
+.reponse-table tr {
+	border-color:#bde9d7;
+}
+
+.tagChoix{
+	//border-style: dashed;
+    border-radius: 15px 0px 15px 15px;
+    //border-color:#ccc;
+    padding: 8px;
+    background: #bde9d7;
+    color:#666666;
+}
+
+.participant{
+
+    //display: inline-block;
+    text-align: right;
+    border-left: 50px;
+    height:30px;
+    .name{
+    	width:198px;
+        background-color: #e6e6e6;
+	    float: right;
+	    text-align: left;
+	    padding-left: 10px;
+	    height: 30px;
+	    line-height: 30px;
+	    font-size: 14px;
+	}
+}
+
+.choix-champ{
+	color:#7cd4af;
+	font-size:20px;
+	text-align:center;
+	font-weight: bolder;
+	background: #f4f4f4;
+	border: 1px #fff solid;
+}
+
+.triangle{
+	border-left: 15px #e6e6e6 solid;
+    border-top: 15px transparent solid;
+    border-bottom: 15px transparent solid;
+    height: 0;
+    width: 0;
+    float: right;
+    display: inline-block;
+    margin-right: 40px;
+}
+.name-participant{
+	width:198px;
+	height: 31px;
+    border-radius: 4px 0px 0px 4px;
+}
+.valide-choix{
+	margin: auto auto 10px 75%;
+	background: #bde9d7;
+  	border: #7cd4af;
+
+  	&:hover,&:focus,&:active,&:visited{
+      background: #7cd4af;
+      border: #bde9d7;
+  }
+}
