@@ -18,7 +18,8 @@ angular
     'ngRoute',
     'ngSanitize',
     'ngTouch',
-    'ui.router'
+    'ui.router',
+    'ui.bootstrap'
   ])
   .config(function ($routeProvider, $stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/home');
@@ -26,24 +27,47 @@ angular
 
       .state('home', {
         url: '/home',
-        views: {
-          'mainView': {
-            templateUrl: 'views/main.html',
-            controller: 'MainCtrl',
-            controllerAs: 'main'
-          }
-        }
+          templateUrl: 'views/main.html',
+          controller: 'MainCtrl',
+          controllerAs: 'main'
       })
 
       .state('about', {
         url: '/about',
-        views: {
-          'mainView': {
-            templateUrl: 'views/about.html',
-            controller: 'AboutCtrl',
-            controllerAs: 'about'
-          }
-        }
+          templateUrl: 'views/about.html',
+          controller: 'AboutCtrl',
+          controllerAs: 'about'
+      })
+
+      .state('createAskeet', {
+        templateUrl: 'views/create-askeet-form.html',
+        controller: 'CreateAskeetCtrl',
+        controllerAs: 'vm'
+      })
+
+      .state('createAskeet.step1', {
+        url: '/new-askeet',
+        templateUrl: 'views/multi-step-form/step1.html'
+      })
+
+      .state('createAskeet.step2', {
+        url: '/new-askeet2',
+        templateUrl: 'views/multi-step-form/step2.html'
+      })
+
+      .state('createAskeet.step3', {
+        url: '/new-askeet3',
+        templateUrl: 'views/multi-step-form/step3.html'
+      })
+
+      .state('createAskeet.step4', {
+        url: '/new-askeet4',
+        templateUrl: 'views/multi-step-form/step4.html'
+      })
+
+      .state('createAskeet.step5', {
+        url: '/new-askeet5',
+        templateUrl: 'views/multi-step-form/step5.html'
       })
 
       .state('reponse', {

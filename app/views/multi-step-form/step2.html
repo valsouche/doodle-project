@@ -1,0 +1,44 @@
+<h1>Vos critères</h1>
+<a ng-click="vm.displayText()">Texte</a>
+<a ng-click="vm.displayDate()">Date</a>
+<a ng-click="vm.displayTime()">Heure</a>
+
+<p class="input-group" ng-show="vm.displayDatepicker">
+    <input type="text" class="form-control" uib-datepicker-popup="{{vm.format}}" ng-model="vm.dateTmp" is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
+    <span class="input-group-btn">
+        <button type="button" class="btn btn-default" ng-click="open1()"><i class="glyphicon glyphicon-calendar"></i></button>
+    </span>
+    <span class="input-group-btn">
+        <button type="button" class="btn btn-default" ng-click="vm.addInput()"><i class="glyphicon glyphicon-ok"></i></button>
+    </span>
+</p>
+<p class="input-group" ng-show="vm.displayTextInput">
+    <input type="text" class="form-control"  ng-model="vm.textTmp"/>
+    <span class="input-group-btn">
+        <button type="button" class="btn btn-default" ng-disabled= "true"><i class="glyphicon glyphicon-font"></i></button>
+    </span>
+    <span class="input-group-btn">
+        <button type="button" class="btn btn-default" ng-click="vm.addInput()"><i class="glyphicon glyphicon-ok"></i></button>
+    </span>
+</p>
+
+<p class="input-group" ng-show="vm.displayTimePicker">
+    <uib-timepicker ng-model="vm.timeTmp" ng-change="changed()" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"></uib-timepicker>
+    <span class="input-group-btn">
+        <button type="button" class="btn btn-default" ng-click="vm.addInput()"><i class="glyphicon glyphicon-ok"></i></button>
+    </span>
+</p>
+
+<p class="input-group" ng-repeat="critere in vm.askeet.criteria">
+    <input type="text" disabled class="form-control" placeholder="{{critere.data}}"/>
+          <span class="input-group-btn">
+            <button type="button" ng-click="vm.deleteInput(critere)" class="btn btn-default""><i class="glyphicon glyphicon-remove"></i></button>
+          </span>
+</p>
+
+<div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+        <a ui-sref="createAskeet.step1" class="btn btn-default">Revenir</a>
+        <a ui-sref="createAskeet.step3" class="btn btn-default">Poursuivre</a>
+    </div>
+</div>
