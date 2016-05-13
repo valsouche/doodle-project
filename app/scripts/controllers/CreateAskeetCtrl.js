@@ -38,6 +38,7 @@ angular.module('projetsEpsiApp')
 				invitations: []
 			};
 
+
 			vm.displayDate = function() {
 				vm.displayDatepicker = true;
 				vm.displayTextInput = false;
@@ -55,7 +56,6 @@ angular.module('projetsEpsiApp')
 			};
 
 			// Ajout d'input type date
-			vm.datepicker = {data: null};
 			vm.addInput = function() {
 				if (!_.isNull(vm.dateTmp)) {
 					vm.askeet.criteria.push({data: vm.dateTmp});
@@ -126,6 +126,5 @@ angular.module('projetsEpsiApp')
 			$scope.toggleMode = function() {
 				$scope.ismeridian = ! $scope.ismeridian;
 			};
-
 		}
 

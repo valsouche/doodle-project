@@ -1,15 +1,51 @@
-<h1>Invitez des participants</h1>
-<div class="form-group">
-    <div class="col-sm-10">
-        <input type="text" class="form-control" id="title" placeholder="Ajoutez des emails" ng-model="vm.tmpEmail">
-        <p ng-show="vm.invalid">Veuillez entrer un email valide</p>
-        <a ng-click="vm.addEmail()" class="btn btn-default">Ajouté</a>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h4 class="text-green">Invitez des participants</h4>
+    </div>
+    <div class="panel-body">
+
+		<div class="form-group">
+		    <div class="col-sm-10">
+		        <input type="text" class="form-control" id="title" placeholder="Ajoutez des emails" ng-model="vm.tmpEmail">
+		        <span class="input-group-btn">
+			        <button type="button" class="btn btn-default" ng-click="vm.addEmail()" ><i class="glyphicon glyphicon-plus"></i></button>
+			    </span>
+		        <p ng-show="vm.invalid">Veuillez entrer un email valide</p>
+		        
+		    </div>
+		</div>
+	</div>
+    <div class="panel-footer">
+    	<a ui-sref="createAskeet.step3" class="valide-choix btn btn-default">Revenir</a>
+    	<a ui-sref="createAskeet.step5" class="valide-choix btn btn-default">Terminer</a>
     </div>
 </div>
 
-<div class="form-group">
-    <div class="col-sm-offset-2 col-sm-10">
-        <a ui-sref="createAskeet.step3" class="btn btn-default">Revenir</a>
-        <a ui-sref="createAskeet.step5" class="btn btn-default">Terminer</a>
+       <div class="panel panel-default intro">
+        <div class="panel-body ">
+
+            <h4><span class="text-green">Title:  </span>{{vm.askeet.title}}</h4>
+            <dl>
+                <dt  class="text-green">Auteur: </dt>
+                <dd>{{vm.askeet.name}}</dd>
+                <dt  class="text-green">Description:</dt>
+                <dd>{{vm.askeet.description}}</dd>
+                <dt  class="text-green">Critères:</dt>
+                <dd ng-repeat="critere in vm.askeet.criteria"><span class="glyphicon glyphicon-record" aria-hidden="true"></span> {{critere.data}}</dd>
+                
+                <dt  class="text-green">Vos options:</dt>
+                <dd ><span class="glyphicon glyphicon-record" aria-hidden="true"></span> {{option.privateVote === "ture" ? "Votes privés" : ""}}</dd>
+                <dd ><span class="glyphicon glyphicon-record" aria-hidden="true"></span> {{option.voteModification === "ture" ? "Votes modificable après validation:" : ""}}</dd>
+                <dd ><span class="glyphicon glyphicon-record" aria-hidden="true"></span> {{option.voteModificationByUsers === "ture" ? "Votes modificable un autre utilisateur" : ""}}</dd>
+                <dd ><span class="glyphicon glyphicon-record" aria-hidden="true"></span> {{option.multipleVote === "ture" ? "Multiple réponses" : ""}}</dd>
+                <dd ><span class="glyphicon glyphicon-record" aria-hidden="true"></span> {{option.addAnswerByUser === "ture" ? "Possible d'ajouter un critères par utilisateur" : ""}}</dd>
+                <dd ><span class="glyphicon glyphicon-record" aria-hidden="true"></span> {{option.displayResult === "ture" ? "Afficher un sondage final aux utilisateurs" : ""}}</dd>
+
+                <dt class="text-green">Votre liste d'invités:</dt>
+                <dd ng-repeat="mail in vm.askeet.invitations"><span class="glyphicon glyphicon-record" aria-hidden="true"></span> {{mail}}</dd>
+                
+            </dl>
+        </div>
     </div>
-</div>
+
