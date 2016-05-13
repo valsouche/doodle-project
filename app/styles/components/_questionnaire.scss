@@ -83,12 +83,14 @@
     border-radius: 4px 0px 0px 4px;
 }
 .valide-choix{
-	margin: auto auto 10px 75%;
+	/*margin: auto auto 10px 75%;*/
 	background: #bde9d7;
   	border: #7cd4af;
+  	color:#fff;
 
-  	&:hover,&:focus,&:active,&:visited{
+  	&:hover,&:focus,&:active{
       background: #7cd4af;
       border: #bde9d7;
+      color:#fff;
   }
 }

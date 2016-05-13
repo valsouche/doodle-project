@@ -1,31 +1,53 @@
-<h1>Planifiez vos évènements</h1>
-<div class="form-group">
-    <div class="col-sm-10">
-        <input type="text" class="form-control" id="title" placeholder="Titre de votre évènements" ng-model="vm.askeet.title">
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="text-green">Planifiez vos évènements</h4>
+        </div>
+        <div class="panel-body">
+            <div class="form-group">
+                <label class="control-label col-sm-2 text-green" for="title">Titre:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="title" placeholder="Titre de votre évènements" ng-model="vm.askeet.title">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2 text-green" for="yourName">Votre nom:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="yourName" placeholder="Votre nom" ng-model="vm.askeet.name">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2 text-green" for="yourMail">Email:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="yourMail" placeholder="Votre email" ng-model="vm.askeet.email">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2 text-green" for="yourLocation">Lieu:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="yourLocation" placeholder="Lieu de votre évènement" ng-model="vm.askeet.location">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2 text-green" for="yourDescription">Description:</label>
+                <div class="col-sm-10">
+                    <textarea type="text" class="form-control" id="yourDescription" placeholder="Décrivez votre évènement" ng-model="vm.askeet.description"></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="panel-footer">
+            <a ui-sref="createAskeet.step2" class="valide-choix btn btn-default">Poursuivre</a>
+        </div>
     </div>
-</div>
-<div class="form-group">
-    <div class="col-sm-10">
-        <input type="text" class="form-control" id="yourName" placeholder="Votre nom" ng-model="vm.askeet.name">
+    <div class="panel panel-default intro">
+        <div class="panel-body ">
+
+            <h4><span class="text-green">Title:  </span>{{vm.askeet.title}}</h4>
+            <dl>
+                <dt  class="text-green">Auteur</dt>
+                <dd>{{vm.askeet.name}}</dd>
+                <dt  class="text-green">Description</dt>
+                <dd>{{vm.askeet.description}}</dd>
+            </dl>
+        </div>
     </div>
-</div>
-<div class="form-group">
-    <div class="col-sm-10">
-        <input type="text" class="form-control" id="yourMail" placeholder="Votre email" ng-model="vm.askeet.email">
-    </div>
-</div>
-<div class="form-group">
-    <div class="col-sm-10">
-        <input type="text" class="form-control" id="yourLocation" placeholder="Lieu de votre évènement" ng-model="vm.askeet.location">
-    </div>
-</div>
-<div class="form-group">
-    <div class="col-sm-10">
-        <textarea type="text" class="form-control" id="yourDescription" placeholder="Décrivez votre évènement" ng-model="vm.askeet.description"></textarea>
-    </div>
-</div>
-<div class="form-group">
-    <div class="col-sm-offset-2 col-sm-10">
-        <a ui-sref="createAskeet.step2" class="btn btn-default">Poursuivre</a>
-    </div>
-</div>

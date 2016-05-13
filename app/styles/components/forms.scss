@@ -8,3 +8,18 @@
 .form-horizontal {
   padding: 40px;
 }
+.text-green{
+	color:#7cd4af;
+}
+.btn-choix{
+ 
+  background: #fff;
+  border: #ddd;
+  color:#000;
+
+  &:hover,&:focus,&:active{
+      background: #7cd4af;
+      border: #fff;
+      color:#fff;
+  }
+}

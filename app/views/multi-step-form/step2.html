@@ -1,7 +1,14 @@
-<h1>Vos critères</h1>
-<a ng-click="vm.displayText()">Texte</a>
-<a ng-click="vm.displayDate()">Date</a>
-<a ng-click="vm.displayTime()">Heure</a>
+
+
+<div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="text-green">Vos critères</h4>
+        </div>
+        <div class="panel-body">
+
+<a ng-click="vm.displayText()" class="btn btn-choix">Texte</a>
+<a ng-click="vm.displayDate()" class="btn btn-choix">Date</a>
+<a ng-click="vm.displayTime()" class="btn btn-choix">Heure</a>
 
 <p class="input-group" ng-show="vm.displayDatepicker">
     <input type="text" class="form-control" uib-datepicker-popup="{{vm.format}}" ng-model="vm.dateTmp" is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
@@ -36,9 +43,24 @@
           </span>
 </p>
 
-<div class="form-group">
-    <div class="col-sm-offset-2 col-sm-10">
-        <a ui-sref="createAskeet.step1" class="btn btn-default">Revenir</a>
-        <a ui-sref="createAskeet.step3" class="btn btn-default">Poursuivre</a>
-    </div>
 </div>
+        <div class="panel-footer">
+            <a ui-sref="createAskeet.step1" class="valide-choix btn btn-default">Revenir</a>
+            <a ui-sref="createAskeet.step3" class="valide-choix btn btn-default">Poursuivre</a>
+        </div>
+    </div>
+
+        <div class="panel panel-default intro">
+        <div class="panel-body ">
+
+            <h4><span class="text-green">Title:  </span>{{vm.askeet.title}}</h4>
+            <dl>
+                <dt  class="text-green">Auteur</dt>
+                <dd>{{vm.askeet.name}}</dd>
+                <dt  class="text-green">Description</dt>
+                <dd>{{vm.askeet.description}}</dd>
+                <dt  class="text-green">Critères</dt>
+                <dd ng-repeat="critere in vm.askeet.criteria"><span class="glyphicon glyphicon-record" aria-hidden="true"></span> {{critere.data}}</dd>
+            </dl>
+        </div>
+    </div>

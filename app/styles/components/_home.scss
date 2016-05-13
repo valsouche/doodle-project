@@ -94,7 +94,7 @@ body {
   }
 }
 .intro{
-  background: #E5E5E5;
+  background: #f5f5f5;
   margin-bottom:20px;
 }
 .intro .text{
@@ -109,9 +109,15 @@ body {
   background: #bde9d7;
   border: #7cd4af;
   font-size: 23px;
+  color:#fff;
 
-  &:hover,&:focus,&:active,&:visited{
+  &:hover,&:focus,&:active{
       background: #7cd4af;
       border: #bde9d7;
+      color:#fff;
   }
+}
+.panel-footer,.footer-controls{
+  text-align:right;
+  padding-bottom:15px;
 }
