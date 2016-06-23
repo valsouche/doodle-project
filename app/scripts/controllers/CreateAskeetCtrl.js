@@ -10,7 +10,7 @@
 angular.module('projetsEpsiApp')
 	.controller('CreateAskeetCtrl', CreateAskeetCtrl);
 
-		function CreateAskeetCtrl($scope, $filter) {
+		function CreateAskeetCtrl($scope, $http, $filter) {
 			var vm = this;
 			vm.displayTextInput = false;
 			vm.displayDatepicker = true;
@@ -19,23 +19,27 @@ angular.module('projetsEpsiApp')
 			vm.dateTmp = null;
 			vm.timeTmp = null;
 			vm.textTmp = null;
+			vm.askeetId = null;
+			vm.generatedLink = null;
+			vm.displayLink = false;
 
 			vm.askeet = {
-				title: null,
-				name: null,
-				email: null,
-				location: null,
-				description: null,
-				criteria: [],
-				details: {
-					privateVote: false,
-					voteModification: false,
-					voteModificationByUsers: false,
-					multipleVote: false,
-					addAnswerByUser: false,
-					displayResult: false
+				"entityTitle": null,
+				"entityName": null,
+				"entityEmail": null,
+				"entityLocation": null,
+				"entityDescription": null,
+				"entityCriteria": [],
+				"entityDetails": {
+					"entityPrivateVote": false,
+					"entityVoteModification": false,
+					"entityVoteModificationByUsers": false,
+					"entityMultipleVote": false,
+					"entityAddAnswerByUser": false,
+					"entityDisplayResult": false
 				},
-				invitations: []
+				"entityInvitations": [],
+				"entityResponses": []
 			};
 
 
@@ -58,15 +62,15 @@ angular.module('projetsEpsiApp')
 			// Ajout d'input type date
 			vm.addInput = function() {
 				if (!_.isNull(vm.dateTmp)) {
-					vm.askeet.criteria.push({data: vm.dateTmp});
+					vm.askeet.entityCriteria.push(vm.dateTmp);
 					vm.dateTmp = null;
 				}
 				else if (!_.isNull(vm.textTmp)) {
-					vm.askeet.criteria.push({data: vm.textTmp});
+					vm.askeet.entityCriteria.push(vm.textTmp);
 					vm.textTmp = null;
 				}
 				else if (!_.isNull(vm.timeTmp)) {
-					vm.askeet.criteria.push({data: vm.timeTmp});
+					vm.askeet.entityCriteria.push(vm.timeTmp);
 					vm.timeTmp = null;
 				}
 			};
@@ -81,13 +85,29 @@ angular.module('projetsEpsiApp')
 			vm.addEmail = function() {
 				if (!_.isNull(vm.tmpEmail) && _.includes(vm.tmpEmail, '@')) {
 					vm.invalid = false;
-					vm.askeet.invitations.push(vm.tmpEmail);
+					vm.askeet.entityInvitations.push(vm.tmpEmail);
 					vm.tmpEmail = "";
 				} else {
 					vm.invalid = true;
 				}
 			};
 
+			vm.createAskeet = function() {
+				$http.post('http://glassfish.security-helpzone.com/doodle-project/ws/askeet/create', vm.askeet)
+					.then(function(res) {
+						console.log('créé ' + res);
+						vm.askeetEntityId = res.data.entityId;
+						vm.askeetId = res.data.id;
+						vm.generateLink(vm.askeetEntityId, vm.askeetId);
+					}, function(err) {
+						console.log('error ' + err);
+					})
+			};
+
+			vm.generateLink = function(entityId, id) {
+				vm.displayLink = true;
+				return vm.generatedLink = "http://localhost:9000/askeet/" + id + "/" + entityId;
+			};
 
 
 

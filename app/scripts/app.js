@@ -22,6 +22,7 @@ angular
     'ui.bootstrap'
   ])
   .config(function ($routeProvider, $stateProvider, $urlRouterProvider) {
+
     $urlRouterProvider.otherwise('/home');
     $stateProvider
 
@@ -71,9 +72,14 @@ angular
       })
 
       .state('reponse', {
-        url: '/reponse',
+        url: '/askeet/{id}/{entityId}',
           templateUrl: 'views/reponse.html',
           controller: 'ReponseCtrl',
           controllerAs: 'reponse'
       })
-  });
+  })
+
+  .config(['$httpProvider', function($httpProvider) {
+    $httpProvider.defaults.useXDomain = true;
+    delete $httpProvider.defaults.headers.common['X-Requested-With'];
+  }]);

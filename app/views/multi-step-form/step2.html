@@ -36,7 +36,7 @@
     </span>
 </p>
 
-<p class="input-group" ng-repeat="critere in vm.askeet.criteria">
+<p class="input-group" ng-repeat="critere in vm.askeet.entityCriteria">
     <input type="text" disabled class="form-control" placeholder="{{critere.data}}"/>
           <span class="input-group-btn">
             <button type="button" ng-click="vm.deleteInput(critere)" class="btn btn-default""><i class="glyphicon glyphicon-remove"></i></button>
@@ -53,14 +53,14 @@
         <div class="panel panel-default intro">
         <div class="panel-body ">
 
-            <h4><span class="text-green">Title:  </span>{{vm.askeet.title}}</h4>
+            <h4><span class="text-green">Title:  </span>{{vm.askeet.entityTitle}}</h4>
             <dl>
                 <dt  class="text-green">Auteur</dt>
-                <dd>{{vm.askeet.name}}</dd>
+                <dd>{{vm.askeet.entityName}}</dd>
                 <dt  class="text-green">Description</dt>
-                <dd>{{vm.askeet.description}}</dd>
+                <dd>{{vm.askeet.entityDescription}}</dd>
                 <dt  class="text-green">Critères</dt>
-                <dd ng-repeat="critere in vm.askeet.criteria"><span class="glyphicon glyphicon-record" aria-hidden="true"></span> {{critere.data}}</dd>
+                <dd ng-repeat="critere in vm.askeet.entityCriterias"><span class="glyphicon glyphicon-record" aria-hidden="true"></span> {{critere.data}}</dd>
             </dl>
         </div>
     </div>

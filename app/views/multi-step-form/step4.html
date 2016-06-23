@@ -25,25 +25,25 @@
        <div class="panel panel-default intro">
         <div class="panel-body ">
 
-            <h4><span class="text-green">Title:  </span>{{vm.askeet.title}}</h4>
+            <h4><span class="text-green">Title:  </span>{{vm.askeet.entityTitle}}</h4>
             <dl>
                 <dt  class="text-green">Auteur: </dt>
-                <dd>{{vm.askeet.name}}</dd>
+                <dd>{{vm.askeet.entityName}}</dd>
                 <dt  class="text-green">Description:</dt>
-                <dd>{{vm.askeet.description}}</dd>
+                <dd>{{vm.askeet.entityDescription}}</dd>
                 <dt  class="text-green">Critères:</dt>
-                <dd ng-repeat="critere in vm.askeet.criteria"><span class="glyphicon glyphicon-record" aria-hidden="true"></span> {{critere.data}}</dd>
+                <dd ng-repeat="critere in vm.askeet.entityCriteria"><span class="glyphicon glyphicon-record" aria-hidden="true"></span> {{critere.data}}</dd>
                 
                 <dt  class="text-green">Vos options:</dt>
-                <dd ><span class="glyphicon glyphicon-record" aria-hidden="true"></span> {{option.privateVote === "ture" ? "Votes privés" : ""}}</dd>
-                <dd ><span class="glyphicon glyphicon-record" aria-hidden="true"></span> {{option.voteModification === "ture" ? "Votes modificable après validation:" : ""}}</dd>
-                <dd ><span class="glyphicon glyphicon-record" aria-hidden="true"></span> {{option.voteModificationByUsers === "ture" ? "Votes modificable un autre utilisateur" : ""}}</dd>
-                <dd ><span class="glyphicon glyphicon-record" aria-hidden="true"></span> {{option.multipleVote === "ture" ? "Multiple réponses" : ""}}</dd>
-                <dd ><span class="glyphicon glyphicon-record" aria-hidden="true"></span> {{option.addAnswerByUser === "ture" ? "Possible d'ajouter un critères par utilisateur" : ""}}</dd>
-                <dd ><span class="glyphicon glyphicon-record" aria-hidden="true"></span> {{option.displayResult === "ture" ? "Afficher un sondage final aux utilisateurs" : ""}}</dd>
+                <dd ><span class="glyphicon glyphicon-record" aria-hidden="true"></span> {{option.privateVote === "true" ? "Votes privés" : ""}}</dd>
+                <dd ><span class="glyphicon glyphicon-record" aria-hidden="true"></span> {{option.voteModification === "true" ? "Votes modificable après validation:" : ""}}</dd>
+                <dd ><span class="glyphicon glyphicon-record" aria-hidden="true"></span> {{option.voteModificationByUsers === "true" ? "Votes modificable un autre utilisateur" : ""}}</dd>
+                <dd ><span class="glyphicon glyphicon-record" aria-hidden="true"></span> {{option.multipleVote === "true" ? "Multiple réponses" : ""}}</dd>
+                <dd ><span class="glyphicon glyphicon-record" aria-hidden="true"></span> {{option.addAnswerByUser === "true" ? "Possible d'ajouter un critères par utilisateur" : ""}}</dd>
+                <dd ><span class="glyphicon glyphicon-record" aria-hidden="true"></span> {{option.displayResult === "true" ? "Afficher un sondage final aux utilisateurs" : ""}}</dd>
 
                 <dt class="text-green">Votre liste d'invités:</dt>
-                <dd ng-repeat="mail in vm.askeet.invitations"><span class="glyphicon glyphicon-record" aria-hidden="true"></span> {{mail}}</dd>
+                <dd ng-repeat="mail in vm.askeet.entityInvitations"><span class="glyphicon glyphicon-record" aria-hidden="true"></span> {{mail}}</dd>
                 
             </dl>
         </div>
