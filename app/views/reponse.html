@@ -1,4 +1,10 @@
-        <div class="header">
+        <div ng-hide="!loader.isLoading" class="loader-wrapper">
+            <div class="loader-img">
+                <img ng-src="../images/loader.gif">
+                <p>Askeet ...</p>
+            </div>
+        </div>
+        <div ng-hide="loader.isLoading" class="header">
           <h4 class="title-questionnaire">{{askeetList.entityTitle}} </h4>
           <p>{{askeetList.entityDescription}} à {{askeetList.entityLocation}}</p>
         </div>
@@ -9,27 +15,21 @@
             <thead>
               <tr>
                 <th></th>
-                <th ng-repeat="criterias in askeetList.entityCriteria"><span class="tagChoix">{{criterias}}</span></th>
+                <th ng-repeat="criteria in askeetList.entityCriteria"><span class="tagChoix">{{criteria}}</span></th>
               </tr>
             </thead>
             <tbody>
-              <tr ng-repeat="users in askeetList.entityResponses">
-                <td class='participant'><div class="triangle"></div><span class="name">users.nameUser</span></td>
-                <td class="choix-champ"><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span></td>
-                <td class="choix-champ"></td>
+              <tr ng-repeat="user in askeetList.entityResponses">
+                <td class='participant'><div class="triangle"></div><span class="name">{{user.entityName}}</span></td>
+                <td ng-repeat="(i,lol) in user.entityResponseChoices" ng-if ="$index < askeetList.entityCriteria.length" class="choix-champ"><span ng-class="(lol === true) ? 'glyphicon glyphicon-thumbs-up' : ''" aria-hidden="true"></span></td>
               </tr>
-              <tr >
-                <form name="emailReponse" style="margin-left:180px" ng-submit="emailReponse()" ng-controller="ReponseCtrl">
-                  <td sclass='participant'><div class="triangle"></div><input type="text" class="form-control name-participant name" placeholder="Votre nom" ng-model="answers.nameUser"></td>
-                  <td class="choix-champ"><input type="checkbox" value="1" ng-model="answers.choix_1"></td>
-                  <td class="choix-champ"><input type="checkbox" value="2" ng-model="answers.choix_2"></td>
-                  <td class="choix-champ"><input type="checkbox" value="3" ng-model="answers.choix_3"></td>
-                </form>
+              <tr>
+                  <td sclass='participant'><div class="triangle"></div><input type="text" class="form-control name-participant name" placeholder="Votre nom" ng-model="answers.entityName"></td>
+                  <td ng-repeat="choice in askeetList.entityCriteria" class="choix-champ"><input type="checkbox" ng-model="answers.entityResponseChoices[$index]"></td>
               </tr>
             </tbody>
           </table>
           <div class="footer-controls">
-            <a class="valide-choix btn btn-default" ng-click="emailReponse">Valide Votre Choix</a>
+            <a class="valide-choix btn btn-default" ng-click="addAnswer()">Valider mes choix</a>
           </div>
         </div>
-        <pre>list={{answers}}</pre>

@@ -4,17 +4,19 @@
         <h4 class="text-green">Invitez des participants</h4>
     </div>
     <div class="panel-body">
-
-		<div class="form-group">
-		    <div class="col-sm-10">
-		        <input type="text" class="form-control" id="title" placeholder="Ajoutez des emails" ng-model="vm.tmpEmail">
-		        <span class="input-group-btn">
-			        <button type="button" class="btn btn-default" ng-click="vm.addEmail()" ><i class="glyphicon glyphicon-plus"></i></button>
-			    </span>
-		        <p ng-show="vm.invalid">Veuillez entrer un email valide</p>
-		        
-		    </div>
-		</div>
+        <p class="input-group">
+            <input type="email" class="form-control" placeholder="Entrez un mail" ng-model="vm.tmpEmail"/>
+          <span class="input-group-btn">
+            <button type="button" ng-click="vm.addEmail()" class="btn btn-default""><i class="glyphicon glyphicon-plus"></i></button>
+          </span>
+          <p ng-show="vm.invalid">Veuillez entrer un email valide</p>
+        </p>
+        <p class="input-group" ng-repeat="mail in vm.askeet.entityInvitations">
+            <input type="text" disabled class="form-control" placeholder="{{mail}}"/>
+          <span class="input-group-btn">
+            <button type="button" ng-click="vm.deleteMail(mail)" class="btn btn-default""><i class="glyphicon glyphicon-remove"></i></button>
+          </span>
+        </p>
 	</div>
     <div class="panel-footer">
     	<a ui-sref="createAskeet.step3" class="valide-choix btn btn-default">Revenir</a>

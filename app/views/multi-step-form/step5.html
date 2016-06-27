@@ -25,11 +25,11 @@
                 <dd ng-repeat="mail in vm.askeet.entityInvitations"><span class="glyphicon glyphicon-record" aria-hidden="true"></span> {{mail}}</dd>
                 
             </dl>
-            <a ng-show="!vm.displayLink" class="btn btn-primary" ng-click="vm.createAskeet()">Créer mon Askeet</a>
+            <a  class="btn btn-primary" ng-click="vm.createAskeet()">Créer mon Askeet</a>
         </div>
     </div>
 
-<div ng-show="vm.displayLink" class="panel panel-default">
+<div class="panel panel-default">
     <div class="panel-heading">
         <h4 class="text-green">Voici le lien d'accès à votre Askeet</h4>
     </div>

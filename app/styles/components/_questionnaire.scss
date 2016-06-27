@@ -49,7 +49,7 @@
     .name{
     	width:198px;
         background-color: #e6e6e6;
-	    float: right;
+	    float: left;
 	    text-align: left;
 	    padding-left: 10px;
 	    height: 30px;
@@ -68,14 +68,13 @@
 }
 
 .triangle{
+	position: absolute;
+	left: 221px;
 	border-left: 15px #e6e6e6 solid;
     border-top: 15px transparent solid;
     border-bottom: 15px transparent solid;
     height: 0;
     width: 0;
-    float: right;
-    display: inline-block;
-    margin-right: 40px;
 }
 .name-participant{
 	width:198px;

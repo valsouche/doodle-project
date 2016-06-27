@@ -10,7 +10,7 @@
 angular.module('projetsEpsiApp')
 	.controller('CreateAskeetCtrl', CreateAskeetCtrl);
 
-		function CreateAskeetCtrl($scope, $http, $filter) {
+		function CreateAskeetCtrl($scope, $http) {
 			var vm = this;
 			vm.displayTextInput = false;
 			vm.displayDatepicker = true;
@@ -22,6 +22,8 @@ angular.module('projetsEpsiApp')
 			vm.askeetId = null;
 			vm.generatedLink = null;
 			vm.displayLink = false;
+			vm.email = {};
+			vm.emailAdmin = {};
 
 			vm.askeet = {
 				"entityTitle": null,
@@ -76,7 +78,11 @@ angular.module('projetsEpsiApp')
 			};
 
 			vm.deleteInput = function(criteria) {
-				vm.askeet.criteria.splice(_.indexOf(vm.askeet.criteria, _.find(vm.askeet.criteria, { 'data': criteria.data })), 1);
+				vm.askeet.entityCriteria.splice(_.indexOf(vm.askeet.entityCriteria, _.find(vm.askeet.entityCriteria, { 'data': criteria.data })), 1);
+			};
+
+			vm.deleteMail = function(mail) {
+				vm.askeet.entityInvitations.splice(_.indexOf(vm.askeet.entityInvitations, _.find(vm.askeet.entityInvitations, { 'data': mail.data })), 1);
 			};
 
 			// Gestion ajout emails invitations
@@ -93,22 +99,49 @@ angular.module('projetsEpsiApp')
 			};
 
 			vm.createAskeet = function() {
-				$http.post('http://glassfish.security-helpzone.com/doodle-project/ws/askeet/create', vm.askeet)
+				$http.post('http://glassfish.security-helpzone.com/doodle-project/ws/askeet/', vm.askeet)
 					.then(function(res) {
-						console.log('créé ' + res);
 						vm.askeetEntityId = res.data.entityId;
 						vm.askeetId = res.data.id;
-						vm.generateLink(vm.askeetEntityId, vm.askeetId);
+						var link = vm.generateLink(vm.askeetEntityId, vm.askeetId);
+						var adminLink = vm.generateAdminLink(vm.askeetEntityId, vm.askeetId);
+						vm.emailAdmin = {
+							"entityFrom": "valentin.souche@gmail.com",
+							"entityTo": "valentin.souche@gmail.com",
+							"entitySubject":"Askeet créé avec succès" ,
+							"entityContent":"Bonjour " + res.entityName + ", </br> Votre Askeet est disponible en suivant ce lien: </br>"+ adminLink
+						};
+
+						$http.post('http://glassfish.security-helpzone.com/doodle-project/ws/email', vm.emailAdmin)
+							.then(function(data) {
+								console.log('Mail à l\'admin !');
+								_.forEach(res.entityInvitations, function(invit) {
+									vm.email = {
+										"entityFrom": "valentin.souche@gmail.com",
+										"entityTo": invit,
+										"entitySubject":"Askeet créé avec succès" ,
+										"entityContent":"Bonjour " + res.entityName + ", </br> Votre Askeet est disponible en suivant ce lien: </br>"+ link
+									};
+									$http.post('http://glassfish.security-helpzone.com/doodle-project/ws/email', vm.email)
+										.then(function(data) {
+											console.log('Mail envoyé aux invités !')
+										})
+								})
 					}, function(err) {
-						console.log('error ' + err);
-					})
+						console.log('error ' + err.data);
+					});
+				})
 			};
 
 			vm.generateLink = function(entityId, id) {
 				vm.displayLink = true;
-				return vm.generatedLink = "http://localhost:9000/askeet/" + id + "/" + entityId;
+				return vm.generatedLink = "http://localhost:9000/#/askeet/" + id + "/" + entityId;
 			};
 
+			vm.generateAdminLink = function(entityId, id) {
+				vm.displayLink = true;
+				return vm.generatedLink = "http://localhost:9000/#/askeet/admin/" + id + "/" + entityId;
+			};
 
 
 			//CODE LIBRAIRIES TIERCES

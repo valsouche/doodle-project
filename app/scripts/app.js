@@ -77,6 +77,18 @@ angular
           controller: 'ReponseCtrl',
           controllerAs: 'reponse'
       })
+
+      .state('admin', {
+        url: '/askeet/admin/{id}/{entityId}',
+        templateUrl: 'views/askeetAdmin.html',
+        controller: 'ReponseCtrl',
+        controllerAs: 'reponse'
+      })
+
+      .state('noEvent', {
+        url: '/askeet/not-found',
+        templateUrl: 'views/noEvent.tpl.html'
+      })
   })
 
   .config(['$httpProvider', function($httpProvider) {
